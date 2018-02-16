@@ -26,5 +26,14 @@ namespace WordCounters.Models.Tests
       char[] testGuideArray = newGuideArray.SetGuideWord("Bird");
       CollectionAssert.AreEqual(birdArray, testGuideArray);
     }
+
+    [TestMethod]
+    public void TextBaseInputs_SetUserInputtoTextBase_True()
+    {
+      WordCounter newTextBaseInput = new WordCounter();
+      newTextBaseInput.SetUserInput("Bird-bird, bird. Bird isn't the Word.");
+      string testTextBaseInput = newTextBaseInput.GetUserInput();
+      Assert.AreEqual("Bird-bird, bird. Bird isn't the Word.", testTextBaseInput);
+    }
   }
 }
