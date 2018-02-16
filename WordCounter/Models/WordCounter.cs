@@ -21,9 +21,11 @@ namespace WordCounters.Models
         return _userInput;
       }
 
-      public void SetGuideWord(char[] newGuideWord)
+      public char[] SetGuideWord(string newGuideWord)
       {
-        _guideWord = newGuideWord;
+        char[] guideWord = newGuideWord.ToCharArray();
+        _guideWord = guideWord;
+        return _guideWord;
       }
 
       public char[] GetGuideWord()
