@@ -9,7 +9,7 @@ namespace WordCounters.Models.Tests
   public class ProjectTest
   {
     [TestMethod]
-    public void InputsToArray_SetGuideWordToArray_True()
+    public void Inputs_GetUserInput_True()
     {
       WordCounter newWordCounter = new WordCounter();
       newWordCounter.SetUserInput("bird");
