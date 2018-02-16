@@ -23,7 +23,7 @@ namespace WordCounters.Models
 
       public char[] SetGuideWord(string newGuideWord)
       {
-        char[] guideWord = newGuideWord.ToCharArray();
+        char[] guideWord = newGuideWord.ToLower().ToCharArray();
         _guideWord = guideWord;
         return _guideWord;
       }
@@ -32,12 +32,12 @@ namespace WordCounters.Models
       {
         return _guideWord;
       }
-      //
-      // public void SetTextBaseWords(List<char[]> textBase)
-      // {
-      //   _textBase = textBase;
-      // }
-      //
+
+      public void SetTextBaseWords(List<char[]> textBase)
+      {
+        _textBase = textBase;
+      }
+
       // public List<char[]> GetTextBaseWords()
       // {
       //   return _textBase;
