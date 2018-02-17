@@ -81,7 +81,6 @@ namespace WordCounters.Models
           else
           {
             completedWords.Add(letter);
-            return;
             // Console.WriteLine(forWords[0]);
           }
         }
