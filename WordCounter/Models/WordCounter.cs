@@ -9,6 +9,7 @@ namespace WordCounters.Models
     {
       private string _userInput;
       private char[] _guideWord;
+      private char[] _textBaseWords;
       private List<char[]> _textBase;
 
       private Dictionary<string, string> _puncs = new Dictionary<string, string>(){
@@ -44,14 +45,53 @@ namespace WordCounters.Models
         return _guideWord;
       }
 
-      public void SetTextBaseWords(List<char[]> textBase)
+      public char[] SetTextBaseWord(string newTextBaseWord)
       {
-        _textBase = textBase;
+        char[] textBaseWord = newTextBaseWord.ToLower().ToCharArray();
+        _textBaseWords = textBaseWord;
+        return _textBaseWords;
       }
 
-      // public List<char[]> GetTextBaseWords()
-      // {
-      //   return _textBase;
-      // }
+      public char[] GetTextBaseWord()
+      {
+        return _textBaseWords;
+      }
+
+      public void SetTextBase(char[] userTextBase)
+      {
+        List<char[]> TextBase = new List<char[]>();
+        List<string> completedWords = new List<string>();
+        for (int i = 0; i < userTextBase.Length; i++)
+        {
+          string letter = userTextBase[i].ToString();
+          if (letter == ". " || letter == ", " || letter == " ")
+          {
+            string combinedWord = string.Join("", completedWords);
+            if (combinedWord == " ")
+            {
+              completedWords.Clear();
+              return;
+            }
+            else
+            {
+            TextBase.Add(combinedWord.ToCharArray());
+            completedWords.Clear();
+            }
+          }
+          else
+          {
+            completedWords.Add(letter);
+            return;
+            // Console.WriteLine(forWords[0]);
+          }
+        }
+        _textBase = TextBase;
+      }
+
+      public List<char[]> GetTextBase()
+      {
+        return _textBase;
+      }
+
     }
 }

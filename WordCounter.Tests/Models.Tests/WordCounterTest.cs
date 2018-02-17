@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System;
 using WordCounters.Models;
+using System.Linq;
 
 namespace WordCounters.Models.Tests
 {
@@ -116,6 +117,36 @@ namespace WordCounters.Models.Tests
       // char[] outputArray = newTextBase2[0];
       // Console.WriteLine(outputArray);
       CollectionAssert.AreEqual(testArray2, newTextBase2[3]);
+    }
+
+    [TestMethod]
+    public void GuideWordMatchesTextBaseWords_ThereAreMatches_True()
+    {
+      WordCounter UserCounter = new WordCounter();
+      string userGuideWord = "bird";
+      string userTextBase = "Bird-bird, bird. Bird isn't the Word.";
+      char[] userGuideWordArray = UserCounter.SetGuideWord(userGuideWord);
+      char[] userTextBaseArray = UserCounter.SetTextBaseWord(userTextBase);
+      UserCounter.SetTextBase(userTextBaseArray);
+
+      char[] GuideWordTest = UserCounter.GetGuideWord();
+      List<char[]> TextBaseTest = UserCounter.GetTextBase();
+      Console.WriteLine(TextBaseTest.Count);
+      int textBaseTestCount = TextBaseTest.Count;
+      int matchCount = 0;
+      for (int i = 0 ; i < textBaseTestCount ; i++)
+      {
+        if(TextBaseTest[i].SequenceEqual(GuideWordTest))
+        {
+          matchCount += 1;
+        }
+        else
+        {
+          return;
+        }
+      }
+
+      Assert.AreEqual(2, matchCount);
     }
 
   }
