@@ -11,6 +11,17 @@ namespace WordCounters.Models
       private char[] _guideWord;
       private List<char[]> _textBase;
 
+      private Dictionary<string, string> _puncs = new Dictionary<string, string>(){
+        {".", "period"},
+        {",", "comma"},
+        {" ", "space"}
+      };
+
+      public string GetPuncs(string key)
+      {
+        return _puncs[key];
+      }
+
       public void SetUserInput(string userInput)
       {
         _userInput = userInput;

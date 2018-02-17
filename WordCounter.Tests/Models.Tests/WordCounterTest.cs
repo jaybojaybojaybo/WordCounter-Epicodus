@@ -47,19 +47,36 @@ namespace WordCounters.Models.Tests
       CollectionAssert.AreEqual(CompareTextBaseArray, testTextBaseArray);
     }
 
-    // [TestMethod]
-    // public void TextBaseArrayToList_SplitArraytoList_True()
-    // {
-    //   string testArray = <Bird-bird, bird. Bird isn't the Word.";
-    //   char[] CompareTextBaseArray2 = testPhrase2.ToCharArray();
-    //
-    //
-    //   WordCounter newTextBaseArray2 = new WordCounter();
-    //   char[] testTextBaseArray2 = newTextBaseArray2.SetGuideWord("Bird-bird, bird. Bird isn't the Word.");
-    //
-    //   testTextBaseArray2.SetTextBaseWords();
-    //
-    //   CollectionAssert.AreEqual( , );
-    // }
+    [TestMethod]
+    public void TextBaseArrayToList_SplitCharArraystoList_True()
+    {
+      string testText = "Bird-bird";
+      char[] testArray = testText.ToLower().ToCharArray();
+      WordCounter TextBaseArray = new WordCounter();
+      List<char[]> newTextBase = new List<char[]> {};
+
+      char[] divisionTextBaseArray = TextBaseArray.SetGuideWord("Bird-bird, bird. Bird isn't the Word.");
+      List<string> forWords = new List<string>();
+      for (int i = 0; i < divisionTextBaseArray.Length; i++)
+      {
+        string letter = divisionTextBaseArray[i].ToString();
+        if (letter == "." || letter == "," || letter == " ")
+        {
+          // Console.WriteLine("punc");
+          string combined = string.Join("", forWords);
+          // Console.WriteLine(combined);
+          newTextBase.Add(combined.ToCharArray());
+          forWords.Clear();
+        }
+        else
+        {
+          forWords.Add(letter);
+          Console.WriteLine(forWords[0]);
+        }
+      }
+      // char[] outputArray = newTextBase[0];
+      // Console.WriteLine(outputArray);
+      CollectionAssert.AreEqual(testArray, newTextBase[0]);
+    }
   }
 }
