@@ -11,6 +11,7 @@ namespace WordCounters.Models
       private char[] _guideWord;
       private char[] _textBaseWords;
       private List<char[]> _textBase;
+      private int _matchCount;
 
       private Dictionary<string, string> _puncs = new Dictionary<string, string>(){
         {".", "period"},
@@ -90,6 +91,30 @@ namespace WordCounters.Models
       public List<char[]> GetTextBase()
       {
         return _textBase;
+      }
+
+      public void SetMatchCount(WordCounter UserCounter)
+      {
+        char[] userGuideWordArray = UserCounter.SetGuideWord(userGuideWord);
+        char[] userTextBaseArray = UserCounter.SetTextBaseWord(userTextBase);
+        UserCounter.SetTextBase(userTextBaseArray);
+
+        char[] GuideWord = UserCounter.GetGuideWord();
+        List<char[]> TextBase = UserCounter.GetTextBase();
+        int textBaseCount = TextBase.Count;
+        int matchCount = 0;
+        for (int i = 0 ; i < textBaseCount ; i++)
+        {
+          if(TextBase[i].SequenceEqual(GuideWord))
+          {
+            matchCount += 1;
+          }
+          else
+          {
+            return;
+          }
+        }
+        _matchCount = matchCount;
       }
 
     }
