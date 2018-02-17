@@ -33,7 +33,8 @@ namespace WordCounters.Models.Tests
       string testBird = "Bird";
       char[] birdArray = testBird.ToLower().ToCharArray();
       WordCounter newGuideArray = new WordCounter();
-      char[] testGuideArray = newGuideArray.SetGuideWord("Bird");
+      newGuideArray.SetGuideWord("Bird");
+      char[] testGuideArray = newGuideArray.GetGuideWord();
       CollectionAssert.AreEqual(birdArray, testGuideArray);
     }
 
@@ -44,8 +45,9 @@ namespace WordCounters.Models.Tests
       string testPhrase = "Bird-bird, bird. Bird isn't the Word.";
       char[] CompareTextBaseArray = testPhrase.ToLower().ToCharArray();
       WordCounter newTextBaseArray = new WordCounter();
-      char[] testTextBaseArray = newTextBaseArray.SetGuideWord("Bird-bird, bird. Bird isn't the Word.");
-      CollectionAssert.AreEqual(CompareTextBaseArray, testTextBaseArray);
+      newTextBaseArray.SetGuideWord("Bird-bird, bird. Bird isn't the Word.");
+      char[] testTextBaseArray = newTextBaseArray.GetGuideWord();
+      CollectionAssert.AreEqual(CompareTextBaseArray testTextBaseArray);
     }
 
     [TestMethod]
@@ -55,8 +57,8 @@ namespace WordCounters.Models.Tests
       char[] testArray = testText.ToLower().ToCharArray();
       WordCounter TextBaseArray = new WordCounter();
       List<char[]> newTextBase = new List<char[]> {};
-
-      char[] divisionTextBaseArray = TextBaseArray.SetGuideWord("Bird-bird, bird. Bird isn't the Word.");
+      TextBaseArray.SetGuideWord("Bird-bird, bird. Bird isn't the Word.");
+      char[] divisionTextBaseArray = TextBaseArray.GetGuideWord();
       List<string> forWords = new List<string>();
       for (int i = 0; i < divisionTextBaseArray.Length; i++)
       {
@@ -87,8 +89,8 @@ namespace WordCounters.Models.Tests
       char[] testArray2 = testText2.ToLower().ToCharArray();
       WordCounter TextBaseArray2 = new WordCounter();
       List<char[]> newTextBase2 = new List<char[]> {};
-
-      char[] divisionTextBaseArray2 = TextBaseArray2.SetGuideWord("Bird-bird, bird. Bird isn't the Word.");
+      TextBaseArray2.SetGuideWord("Bird-bird, bird. Bird isn't the Word.");
+      char[] divisionTextBaseArray2 = TextBaseArray2.GetGuideWord();
       List<string> forWords2 = new List<string>();
       for (int i = 0; i < divisionTextBaseArray2.Length; i++)
       {
@@ -125,7 +127,8 @@ namespace WordCounters.Models.Tests
       WordCounter UserCounter = new WordCounter();
       string userGuideWord = "bird";
       string userTextBase = "Bird-bird, bird. Bird isn't the Word.";
-      char[] userGuideWordArray = UserCounter.SetGuideWord(userGuideWord);
+      UserCounter.SetGuideWord(userGuideWord);
+      char[] userGuideWordArray = UserCounter.GetGuideWord();
       char[] userTextBaseArray = UserCounter.SetTextBaseWord(userTextBase);
       UserCounter.SetTextBase(userTextBaseArray);
 

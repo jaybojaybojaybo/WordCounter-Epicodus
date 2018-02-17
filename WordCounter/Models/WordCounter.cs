@@ -8,21 +8,13 @@ namespace WordCounters.Models
     public class WordCounter
     {
       private string _userInput;
+      private string _userInput2;
       private char[] _guideWord;
       private char[] _textBaseWords;
       private List<char[]> _textBase;
       private int _matchCount;
 
-      private Dictionary<string, string> _puncs = new Dictionary<string, string>(){
-        {".", "period"},
-        {",", "comma"},
-        {" ", "space"}
-      };
-
-      public string GetPuncs(string key)
-      {
-        return _puncs[key];
-      }
+      private static List<WordCounter> _counterCount = new List<WordCounter> {};
 
       public void SetUserInput(string userInput)
       {
@@ -34,11 +26,20 @@ namespace WordCounters.Models
         return _userInput;
       }
 
-      public char[] SetGuideWord(string newGuideWord)
+      public void SetUserInput2(string userInput)
+      {
+        _userInput2 = userInput;
+      }
+
+      public string GetUserInput2()
+      {
+        return _userInput2;
+      }
+
+      public void SetGuideWord(string newGuideWord)
       {
         char[] guideWord = newGuideWord.ToLower().ToCharArray();
         _guideWord = guideWord;
-        return _guideWord;
       }
 
       public char[] GetGuideWord()
@@ -93,10 +94,17 @@ namespace WordCounters.Models
         return _textBase;
       }
 
-      public void SetMatchCount(WordCounter UserCounter)
+      public void SetMatchCount(string userInput1, string userInput2)
       {
-        char[] userGuideWordArray = UserCounter.SetGuideWord(userGuideWord);
-        char[] userTextBaseArray = UserCounter.SetTextBaseWord(userTextBase);
+        WordCounter UserCounter = new WordCounter();
+        UserCounter.SetUserInput(userInput1);
+        UserCounter.SetUserInput2(userInput2);
+        string userGuideWord = UserCounter.GetUserInput();
+        string userTextBase = UserCounter.GetUserInput2();
+        UserCounter.SetGuideWord(userGuideWord);
+        UserCounter.SetTextBaseWord(userTextBase);
+        char[] userGuideWordArray = UserCounter.GetGuideWord();
+        char[] userTextBaseArray = UserCounter.GetTextBaseWord();
         UserCounter.SetTextBase(userTextBaseArray);
 
         char[] GuideWord = UserCounter.GetGuideWord();
@@ -109,12 +117,15 @@ namespace WordCounters.Models
           {
             matchCount += 1;
           }
-          else
-          {
-            return;
-          }
         }
+        _userInput = userGuideWord;
+        _userInput2 = userTextBase;
         _matchCount = matchCount;
+      }
+
+      public int GetMatchCount()
+      {
+        return _matchCount;
       }
 
     }
