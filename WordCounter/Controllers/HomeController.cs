@@ -24,7 +24,9 @@ namespace WordCounters.Controllers
         string userInput1 = newCounter.GetUserInput();
         string userInput2 = newCounter.GetUserInput2();
         string newMatchCount = newCounter.GetMatchCount().ToString();
-        
+        char[] getQuizBaseWord = newCounter.GetTextBaseWord();
+        Console.WriteLine(getQuizBaseWord);
+
         return View("Return", newCounter);
       }
 

@@ -63,10 +63,11 @@ namespace WordCounters.Models
       {
         List<char[]> TextBase = new List<char[]>();
         List<string> completedWords = new List<string>();
-        for (int i = 0; i < userTextBase.Length; i++)
+        int userTextBaseLength = userTextBase.Length;
+        for (int i = 0; i < userTextBaseLength; i++)
         {
           string letter = userTextBase[i].ToString();
-          if (letter == ". " || letter == ", " || letter == " ")
+          if (letter == "." || letter == "," || letter == " ")
           {
             string combinedWord = string.Join("", completedWords);
             if (combinedWord == " ")
@@ -79,6 +80,13 @@ namespace WordCounters.Models
             TextBase.Add(combinedWord.ToCharArray());
             completedWords.Clear();
             }
+          }
+          else if (i == userTextBaseLength-1)
+          {
+            completedWords.Add(letter);
+            string combinedWord = string.Join("", completedWords);
+            TextBase.Add(combinedWord.ToCharArray());
+            completedWords.Clear();
           }
           else
           {

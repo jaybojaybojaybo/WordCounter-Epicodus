@@ -9554,11 +9554,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jasun\\desktop\\WordCounter.Solution\\WordCounter\\WordCounter.csproj",
+      "projectUniqueName": "C:\\Users\\Jasun\\desktop\\WordCounter-Epicodus\\WordCounter\\WordCounter.csproj",
       "projectName": "WordCounter",
-      "projectPath": "C:\\Users\\Jasun\\desktop\\WordCounter.Solution\\WordCounter\\WordCounter.csproj",
+      "projectPath": "C:\\Users\\Jasun\\desktop\\WordCounter-Epicodus\\WordCounter\\WordCounter.csproj",
       "packagesPath": "C:\\Users\\Jasun\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jasun\\desktop\\WordCounter.Solution\\WordCounter\\obj\\",
+      "outputPath": "C:\\Users\\Jasun\\desktop\\WordCounter-Epicodus\\WordCounter\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Jasun\\AppData\\Roaming\\NuGet\\NuGet.Config"
