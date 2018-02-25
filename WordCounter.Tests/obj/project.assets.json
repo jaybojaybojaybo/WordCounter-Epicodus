@@ -10624,11 +10624,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jasun\\desktop\\WordCounter.Solution\\WordCounter.Tests\\WordCounter.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\Jasun\\desktop\\WordCounter-Epicodus\\WordCounter.Tests\\WordCounter.Tests.csproj",
       "projectName": "WordCounter.Tests",
-      "projectPath": "C:\\Users\\Jasun\\desktop\\WordCounter.Solution\\WordCounter.Tests\\WordCounter.Tests.csproj",
+      "projectPath": "C:\\Users\\Jasun\\desktop\\WordCounter-Epicodus\\WordCounter.Tests\\WordCounter.Tests.csproj",
       "packagesPath": "C:\\Users\\Jasun\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jasun\\desktop\\WordCounter.Solution\\WordCounter.Tests\\obj\\",
+      "outputPath": "C:\\Users\\Jasun\\desktop\\WordCounter-Epicodus\\WordCounter.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Jasun\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -10642,8 +10642,8 @@
       "frameworks": {
         "netcoreapp1.1": {
           "projectReferences": {
-            "C:\\Users\\Jasun\\desktop\\WordCounter.Solution\\WordCounter\\WordCounter.csproj": {
-              "projectPath": "C:\\Users\\Jasun\\desktop\\WordCounter.Solution\\WordCounter\\WordCounter.csproj"
+            "C:\\Users\\Jasun\\desktop\\WordCounter-Epicodus\\WordCounter\\WordCounter.csproj": {
+              "projectPath": "C:\\Users\\Jasun\\desktop\\WordCounter-Epicodus\\WordCounter\\WordCounter.csproj"
             }
           }
         }

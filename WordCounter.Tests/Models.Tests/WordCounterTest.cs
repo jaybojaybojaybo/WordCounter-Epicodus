@@ -47,108 +47,62 @@ namespace WordCounters.Models.Tests
       WordCounter newTextBaseArray = new WordCounter();
       newTextBaseArray.SetGuideWord("Bird-bird, bird. Bird isn't the Word.");
       char[] testTextBaseArray = newTextBaseArray.GetGuideWord();
-      CollectionAssert.AreEqual(CompareTextBaseArray testTextBaseArray);
+      CollectionAssert.AreEqual(CompareTextBaseArray, testTextBaseArray);
     }
 
     [TestMethod]
     public void TextBaseArrayToList_SplitCharArraystoList_True()
     {
-      string testText = "Bird-bird";
-      char[] testArray = testText.ToLower().ToCharArray();
+      //Arrange
       WordCounter TextBaseArray = new WordCounter();
-      List<char[]> newTextBase = new List<char[]> {};
-      TextBaseArray.SetGuideWord("Bird-bird, bird. Bird isn't the Word.");
-      char[] divisionTextBaseArray = TextBaseArray.GetGuideWord();
-      List<string> forWords = new List<string>();
-      for (int i = 0; i < divisionTextBaseArray.Length; i++)
-      {
-        string letter = divisionTextBaseArray[i].ToString();
-        if (letter == "." || letter == "," || letter == " ")
-        {
-          // Console.WriteLine("punc");
-          string combined = string.Join("", forWords);
-          // Console.WriteLine(combined);
-          newTextBase.Add(combined.ToCharArray());
-          forWords.Clear();
-        }
-        else
-        {
-          forWords.Add(letter);
-          Console.WriteLine(forWords[0]);
-        }
-      }
-      // char[] outputArray = newTextBase[0];
-      // Console.WriteLine(outputArray);
+      string testText = "Bird-bird";
+      TextBaseArray.SetGuideWord(testText);
+      char[] testArray = TextBaseArray.GetGuideWord();
+
+      TextBaseArray.SetTextBaseWord("Bird-bird, bird. Bird isn't the Word.");
+      char[] divisionTextBaseArray = TextBaseArray.GetTextBaseWord();
+
+      //Act
+      TextBaseArray.SetTextBase(divisionTextBaseArray);
+      List<char[]> newTextBase = TextBaseArray.GetTextBase();
+
+      //Assert
       CollectionAssert.AreEqual(testArray, newTextBase[0]);
     }
 
     [TestMethod]
     public void TextBaseArrayToListIncludingApostropheWords_SplitCharArraystoListIncludingApostropheWords_True()
     {
-      string testText2 = "isn't";
-      char[] testArray2 = testText2.ToLower().ToCharArray();
+      //Arrange
       WordCounter TextBaseArray2 = new WordCounter();
-      List<char[]> newTextBase2 = new List<char[]> {};
-      TextBaseArray2.SetGuideWord("Bird-bird, bird. Bird isn't the Word.");
-      char[] divisionTextBaseArray2 = TextBaseArray2.GetGuideWord();
-      List<string> forWords2 = new List<string>();
-      for (int i = 0; i < divisionTextBaseArray2.Length; i++)
-      {
-        string letter = divisionTextBaseArray2[i].ToString();
-        if (letter == ". " || letter == ", " || letter == " ")
-        {
-          string combined2 = string.Join("", forWords2);
-          if (combined2 == " ")
-          {
-            forWords2.Clear();
-            return;
-          }
-          else
-          {
-          newTextBase2.Add(combined2.ToCharArray());
-          Console.WriteLine(combined2);
-          forWords2.Clear();
-          }
-        }
-        else
-        {
-          forWords2.Add(letter);
-          // Console.WriteLine(forWords[0]);
-        }
-      }
-      // char[] outputArray = newTextBase2[0];
-      // Console.WriteLine(outputArray);
-      CollectionAssert.AreEqual(testArray2, newTextBase2[3]);
+      string testText2 = "isn't";
+      TextBaseArray2.SetGuideWord(testText2);
+      char[] testArray2 = TextBaseArray2.GetGuideWord();
+
+      TextBaseArray2.SetTextBaseWord("Bird-bird, bird. Bird isn't the Word.");
+      char[] divisionTextBaseArray2 = TextBaseArray2.GetTextBaseWord();
+
+      //Act
+      TextBaseArray2.SetTextBase(divisionTextBaseArray2);
+      List<char[]> newTextBase2 = TextBaseArray2.GetTextBase();
+
+      //Assert
+      CollectionAssert.AreEqual(testArray2, newTextBase2[5]);
     }
 
     [TestMethod]
     public void GuideWordMatchesTextBaseWords_ThereAreMatches_True()
     {
+      //Arrange
       WordCounter UserCounter = new WordCounter();
       string userGuideWord = "bird";
       string userTextBase = "Bird-bird, bird. Bird isn't the Word.";
-      UserCounter.SetGuideWord(userGuideWord);
-      char[] userGuideWordArray = UserCounter.GetGuideWord();
-      char[] userTextBaseArray = UserCounter.SetTextBaseWord(userTextBase);
-      UserCounter.SetTextBase(userTextBaseArray);
 
-      char[] GuideWordTest = UserCounter.GetGuideWord();
-      List<char[]> TextBaseTest = UserCounter.GetTextBase();
-      Console.WriteLine(TextBaseTest.Count);
-      int textBaseTestCount = TextBaseTest.Count;
-      int matchCount = 0;
-      for (int i = 0 ; i < textBaseTestCount ; i++)
-      {
-        if(TextBaseTest[i].SequenceEqual(GuideWordTest))
-        {
-          matchCount += 1;
-        }
-        else
-        {
-          return;
-        }
-      }
+      //Act
+      UserCounter.SetMatchCount(userGuideWord, userTextBase);
+      int matchCount = UserCounter.GetMatchCount();
 
+      //Assert
       Assert.AreEqual(2, matchCount);
     }
 
